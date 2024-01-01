@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Letter to Angel</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Snowflake/Raindrop Container -->
+    <div id="snow"></div>
+    <!-- <div class="couple"><img src="img\pngegg (16).png"></div> -->
+    <div class="container">
+        <h1 class="logo-1">Would You Like to Talk Again?</h1>
+        <p>Here you make your decision, if you click 'YES' I'll contact you, <br> if you pick 'NO' I'll immediately delete the website and I won't contact you again</p>
+        
+        <form id="contactform" action="https://api.formsubmits.com/forms/1a7693da-1ccc-4af8-b0a0-5dd178959049/submit" method="POST">
+            <div class="button-container">
+                <input name="_formsubmit_id" type="text" style="display:none">
+                <button type="submit" class="button-74" name="yes" value="yes" id="yesButton">Yes</button>
+                <button type="submit" class="button-74" name="no" value="no" id="noButton">No</button>
+            </div>
+        </form>
+    
+        <p id="responseMessage"></p>
+        <div id="thankYouMessage" style="display: none; text-align: center;">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWFhODY1bHQwZjc3djZlejV0Z2h4cHRhd3FmbWpsOG40eno3bjR1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/T3sqorlp257XYj7qw5/giphy.gif" alt="Thank You GIF">
+            <p>Thank you, I'll contact you soon.</p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('decisionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting immediately
+    
+            // Show a message or perform any action before delay
+            document.getElementById('responseMessage').textContent = 'Sending your response...';
+    
+            // Delay submission for 2 seconds (2000 milliseconds)
+            setTimeout(() => {
+                this.submit(); // Proceed with the form submission
+            }, 5000);
+        });
+    </script>
+    
+    
+    <div class="floating-icon" id="icon1"><img src="img\icn1.png" alt="Icon 1"></div>
+    <div class="floating-icon" id="icon2"><img src="img\icn2.png" alt="Icon 2"></div>
+    <div class="floating-icon" id="icon3"><img src="img\icn3.png" alt="Icon 3"></div>
+    <div class="floating-icon" id="icon4"><img src="img\icn4.png" alt="Icon 4"></div>
+    <div class="floating-icon" id="icon5"><img src="img\icn5.png" alt="Icon 5"></div>
+    <div class="floating-icon" id="icon6"><img src="img\icn6.png" alt="Icon 6"></div>
+    <div class="floating-icon" id="icon7"><img src="img\icn7.png" alt="Icon 7"></div>
+    <div class="floating-icon" id="icon8"><img src="img\icn8.png" alt="Icon 8"></div>
+    <!-- <div class="floating-icon" id="icon9"><img src="img\icn9.png" alt="Icon 9"></div> -->
+    <div class="floating-icon" id="icon11"><img src="img\icn1.png" alt="Icon 1"></div>
+    <div class="floating-icon" id="icon12"><img src="img\icn2.png" alt="Icon 2"></div>
+    <div class="floating-icon" id="icon13"><img src="img\icn3.png" alt="Icon 3"></div>
+    <div class="floating-icon" id="icon14"><img src="img\icn4.png" alt="Icon 4"></div>
+    <div class="floating-icon" id="icon15"><img src="img\icn5.png" alt="Icon 5"></div>
+    <div class="floating-icon" id="icon16"><img src="img\icn6.png" alt="Icon 6"></div>
+    <div class="floating-icon" id="icon17"><img src="img\icn7.png" alt="Icon 7"></div>
+    <div class="floating-icon" id="icon18"><img src="img\icn8.png" alt="Icon 8"></div>
+    <!-- <div class="floating-icon" id="icon19"><img src="img\icn9.png" alt="Icon 9"></div> -->
+    
+    
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+
+    <script>
+        document.getElementById('yesButton').addEventListener('click', function() {
+            function firework() {
+                var duration = 2 * 1000;
+                var animationEnd = Date.now() + duration;
+                var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    
+                function randomInRange(min, max) {
+                    return Math.random() * (max - min) + min;
+                }
+    
+                var interval = setInterval(function() {
+                    var timeLeft = animationEnd - Date.now();
+    
+                    if (timeLeft <= 0) {
+                        return clearInterval(interval);
+                    }
+    
+                    var particleCount = 50 * (timeLeft / duration);
+                    // since particles fall down, start a bit higher than random
+                    confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                    confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+                }, 250);
+            }
+            firework();
+
+                   // Show the GIF and message
+        document.getElementById('thankYouMessage').style.display = 'block';
+    });
+    </script>
+    <script>
+        var words = ['Hi i like HTML', 'I also like css', 'Lorem ipsum dolor sit amet', ' consectetur adipiscing elit', 'sed do eiusmod tempor incididunt'],
+            part,
+            i = 0,
+            offset = 0,
+            len = words.length,
+            forwards = true,
+            skip_count = 0,
+            skip_delay = 15,
+            speed = 70;
+        
+        var wordflick = function () {
+          setInterval(function () {
+            if (forwards) {
+              if (offset >= words[i].length) {
+                ++skip_count;
+                if (skip_count == skip_delay) {
+                  forwards = false;
+                  skip_count = 0;
+                }
+              }
+            }
+            else {
+              if (offset == 0) {
+                forwards = true;
+                i++;
+                offset = 0;
+                if (i >= len) {
+                  i = 0;
+                }
+              }
+            }
+            part = words[i].substr(0, offset);
+            if (skip_count == 0) {
+              if (forwards) {
+                offset++;
+              }
+              else {
+                offset--;
+              }
+            }
+            $('.word').text(part);
+          }, speed);
+        };
+        
+        $(document).ready(function () {
+          wordflick();
+        });
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        $(document).ready(function() {
+        $('.container, .button-74').addClass('loaded');
+        });
+        </script>
+
+        
+    
+    
+</body>
+</html>

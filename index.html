@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style2.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+
+    <title>Letter to Angel</title>
+  </head>
+  <body>
+    <h1>Hover/tap on the book</h1>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <div class="card">
+      <div class="cover">
+        <img src="img\400x400cc.jpg" alt="" />
+        <img src="img\Capture.PNG" alt="" />
+      </div>
+      <div class="content">
+        <!-- <h2>3D ANIMATIONS</h2> -->
+        <p class="word"></p>
+      </div>
+    </div>
+    
+    <div><a class="button-55" role="button" id="yesButton" href="/home.html">Next</a></div>
+
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+      var words = ['Dear Angel, I hope youre doing well. Im reaching out to let you know how much you mean to me. I realize Ive made some significant mistakes, and there were times you might have felt unloved. I was grappling with issues Id never faced before, and I didnt handle them well. Im deeply sorry for that. Im writing to express my sincere regret and to tell you that, despite the challenges, youve been on my mind every day since weve been apart. Your kindness, your beautiful heart, and the way your inner goodness radiates have always inspired me. As we begin this new year, my hope is to have you in my life again. You play such a vital role in my world, and the thought of moving forward without you is difficult to bear. Ive put a lot of thought into this message, hoping it might resonate with you. Whatever decision you make, please know my feelings for you remain unchanged. I will always love you and wish you nothing but the best. I hope this year brings you joy, success, and happiness. Wishing you a wonderful new year. With heartfelt sincerity, Amir'],
+          part,
+          i = 0,
+          offset = 0,
+          len = words.length,
+          forwards = true,
+          skip_count = 0,
+          skip_delay = 15,
+          speed = 60,
+          startDelay = 2000; // Delay before start typing
+    
+      var wordflick = function () {
+        var handle = setInterval(function () {
+          if (forwards) {
+            if (offset >= words[i].length) {
+              clearInterval(handle); // Stop the interval
+            }
+          }
+    
+          part = words[i].substr(0, offset);
+          if (skip_count == 0) {
+            if (forwards) {
+              offset++;
+            }
+          }
+          $('.word').text(part);
+        }, speed);
+      };
+    
+      $(document).ready(function () {
+        setTimeout(wordflick, startDelay); // Start after a delay
+      });
+    </script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </body>
+  
+</html>
+
+
+
+
